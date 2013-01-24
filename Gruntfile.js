@@ -122,6 +122,10 @@ module.exports = function (grunt) {
 
                 'npm-install': {
                     cmd: 'npm install'
+                },
+
+                'bundle-install': {
+                    cmd: 'bundle install'
                 }
             }
         }
@@ -140,7 +144,7 @@ module.exports = function (grunt) {
     grunt.registerTask('pdepend', 'PHP Depend', 'exec:pdepend');
     grunt.registerTask('phpcpd', 'Copy/Paste Detector (CPD) for PHP code', 'exec:phpcpd');
     grunt.registerTask('jsloc', 'JavaScript source statistics', 'exec:jsloc');
-    grunt.registerTask('install', 'Install all project dependencies', ['exec:npm-install', 'exec:composer-install']);
+    grunt.registerTask('install', 'Install all project dependencies', ['exec:npm-install', 'exec:composer-install', 'exec:bundle-install']);
     grunt.registerTask('default', ['jshint']);
     grunt.registerTask('jenkins', ['phpunit', 'phpcs', 'phpmd']);
 }
