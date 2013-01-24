@@ -67,12 +67,13 @@ Describe how to install
 
 ## Development
 
-Install dependencies (requires [Composer](https://getcomposer.org/download) &
-[NPM](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
-to be installed globally)
+Install dependencies (requires [Composer](https://getcomposer.org/download),
+[NPM](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-
+manager) and [Bundler](http://gembundler.com/) to be installed globally)
 
 	$ composer --dev install
 	$ npm install
+    $ bundle install
 
 Set up paths for logging and caching:
 
