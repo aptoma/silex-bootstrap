@@ -1,0 +1,31 @@
+{
+    "name": "aptoma/silex-bootstrap",
+    "description": "Basic bootstrap for Silex based projects. Use as template for getting started quickly.",
+    "authors": [
+        {
+            "name": "Gunnar Lium",
+            "email": "gunnar@aptoma.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "App": "src/",
+            "Aptoma": "src/"
+        }
+    },
+    "require": {
+        "silex/silex": "1.0.*@dev",
+        "twig/twig": "~1",
+        "monolog/monolog": ">=1.0.0",
+        "symfony/monolog-bridge": "2.1.*",
+        "symfony/browser-kit": "2.1.*",
+        "symfony/css-selector": "2.1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.10",
+        "pdepend/pdepend": "1.1.0",
+        "phpmd/phpmd": "1.4.0",
+        "squizlabs/php_codesniffer": "1.4.3"
+    },
+    "minimum-stability": "stable"
+}

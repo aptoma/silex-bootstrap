@@ -1,0 +1,8 @@
+app/config.php
+
+app/cache
+app/log
+
+build
+node_modules
+vendor

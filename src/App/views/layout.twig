@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Silex Bootstrap - {% block title %}No Title{% endblock %}</title>
+        <link rel="stylesheet" href="{{ app.request.basePath }}/css/styles.css" type="text/css" />
+        {% block head %} {% endblock %}
+        <link rel="shortcut icon" href="{{ app.request.basePath }}/favicon.ico" />
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+        <script src="{{ app.request.basePath }}/js/bootstrap.js"></script>
+        {% block closingScripts %}{% endblock %}
+    </body>
+</html>
