@@ -63,8 +63,8 @@ module.exports = function (grunt) {
             exec: {
 
                 'mac-paths': {
-                    cmd: function (options) {
-                        var user = options.cli.options.user || '_www';
+                    cmd: function (user) {
+                        user = user || '_www';
                         return ('mkdir -p app/cache ' +
                             '&& mkdir -p app/log ' +
                             '&& sudo chmod +a "' + user + ' allow delete,write,append,file_inherit,directory_inherit" app/cache app/log ' +

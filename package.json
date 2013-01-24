@@ -5,13 +5,11 @@
         "node": ">=0.8.0"
     },
     "devDependencies": {
-        "jshint": "0.9.1",
         "esprima": "0.9.9",
         "esmorph": "0.0.1",
         "stats": ">= 1.0.0",
         "grunt": ">= 0.4.0rc1",
-        "grunt-cli": ">= 0.1.6",
-        "grunt-exec": "git://github.com/jharding/grunt-exec.git#dev",
+        "grunt-exec": "git://github.com/jharding/grunt-exec.git#grunt0.4rc",
         "grunt-contrib-jshint": ">= 0.1.0"
     }
 }

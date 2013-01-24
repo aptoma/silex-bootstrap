@@ -10,7 +10,9 @@ includes:
 
 To start a new project, run:
 
-    composer create-project --repository-url="git@github.com:aptoma/silex-bootstrap.git" <target>
+    $ git clone git@github.com:aptoma/silex-bootstrap.git <target>
+    $ cd <target>
+    $ rm -rf .git
 
 You should answer `yes` to remove version control files, and are then free to
 do whatever you want. This repo contains a few example files and comments like
@@ -71,13 +73,20 @@ Install dependencies (requires [Composer](https://getcomposer.org/download),
 [NPM](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-
 manager) and [Bundler](http://gembundler.com/) to be installed globally)
 
-	$ composer --dev install
-	$ npm install
+    $ composer --dev install
+    $ npm install
     $ bundle install
+
+You also need to install jshint and grunt-cli globally:
+
+    $ npm install -g jshint@0.9.1
+    $ npm install -g grunt-cli@0.1.6
 
 Set up paths for logging and caching:
 
-	$ grunt mac-paths --user="_www"
+    $ grunt mac-paths
+    # OR if your web server doesn't run as the default _www
+    $ grunt exec:mac-paths:<web_server_user>
 
 To watch your project, run `bundle exec guard`;
 
