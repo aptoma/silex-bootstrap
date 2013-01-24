@@ -14,9 +14,8 @@ To start a new project, run:
     $ cd <target>
     $ rm -rf .git
 
-You should answer `yes` to remove version control files, and are then free to
-do whatever you want. This repo contains a few example files and comments like
-this one, that should obviously not remain within the project.
+This repo contains a few example files and comments like this one, that should
+obviously not remain within the project.
 
 By design, this bootstrap should include more than you are likely to need,
 as it's easier to delete stuff, than to add.
