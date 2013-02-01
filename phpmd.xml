@@ -6,7 +6,7 @@
 					 http://pmd.sf.net/ruleset_xml_schema.xsd"
 		 xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_xml_schema.xsd">
 	<description>
-		Comoyo PHP Mess detector rules
+		Aptoma PHP Mess detector rules
 	</description>
 
 	<!-- Import the entire unused code rule set -->
