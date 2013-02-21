@@ -10,7 +10,7 @@ use Silex\Provider\TwigServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Aptoma\Applicataion extends Silex\Application and adds default behavior
+ * Aptoma\Application extends Silex\Application and adds default behavior
  * and enhancements suited to our projects.
  *
  * @author Gunnar Lium <gunnar@aptoma.com>
@@ -47,26 +47,27 @@ class Application extends BaseApplication
         );
 
         // Register timer function
-        $app->finish(
-            function (Request $request) use ($app) {
-                $execTime = round(microtime(true) - $app['timer.start'], 6) * 1000;
-                $message = sprintf('Script executed in %sms.', $execTime);
-                $context = array(
-                    'msExecTime' => $execTime,
-                    'method' => $request->getMethod(),
-                    'path' => $request->getPathInfo(),
-                );
-                if ($request->getQueryString()) {
-                    $context['query'] = $request->getQueryString();
-                }
-                if ($execTime < $app['timer.threshold_info']) {
-                    $app['logger']->debug($message, $context);
-                } elseif ($execTime < $app['timer.threshold_warning']) {
-                    $app['logger']->info($message, $context);
-                } else {
-                    $app['logger']->warn($message, $context);
-                }
-            }
+        $app->finish(array($app, 'logExecTime'));
+    }
+
+    public function logExecTime(Request $request)
+    {
+        $execTime = round(microtime(true) - $this['timer.start'], 6) * 1000;
+        $message = sprintf('Script executed in %sms.', $execTime);
+        $context = array(
+            'msExecTime' => $execTime,
+            'method' => $request->getMethod(),
+            'path' => $request->getPathInfo(),
         );
+        if ($request->getQueryString()) {
+            $context['query'] = $request->getQueryString();
+        }
+        if ($execTime < $this['timer.threshold_info']) {
+            $this['logger']->debug($message, $context);
+        } elseif ($execTime < $this['timer.threshold_warning']) {
+            $this['logger']->info($message, $context);
+        } else {
+            $this['logger']->warn($message, $context);
+        }
     }
 }

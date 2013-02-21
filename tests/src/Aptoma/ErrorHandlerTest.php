@@ -24,7 +24,7 @@ class ErrorHandlerTest extends BaseWebTestCase
         $this->assertNull($errorHandler->handle(new HttpException(404), 404));
     }
 
-    public function testErrorHandlerShouldReturnJsonDataWithMessageAndStatisCode()
+    public function testErrorHandlerShouldReturnJsonDataWithMessageAndStatusCode()
     {
         $errorHandler = new ErrorHandler($this->app);
         $errorHandler->setRequest(
