@@ -13,6 +13,12 @@ use Symfony\Component\HttpFoundation\Request;
  * Aptoma\Application extends Silex\Application and adds default behavior
  * and enhancements suited to our projects.
  *
+ * @TODO: We should consider further subclassing this class to a more application
+ *        specific set of features in the App namespace. This concrete class
+ *        should provide the shared feature set ALL projects should use, and
+ *        thus be suited for inclusion through Composer (to ease updates
+ *        across projects).
+ *
  * @author Gunnar Lium <gunnar@aptoma.com>
  */
 class Application extends BaseApplication
