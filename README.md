@@ -44,7 +44,28 @@ Project Name
 
 Tech Lead: name <email@aptoma.com>
 
-Describe project
+## Product Description
+
+### Purpose
+
+A clearly defined and documented purpose and lifetime
+
+### Technologies
+
+A description of technologies and components/modules
+
+### Integration with other Aptoma Products
+
+A description of other Aptoma products in use/integrated with
+
+### External Dependencies
+
+A description of external dependencies (both people and systems)
+
+### Roadmap
+
+Roadmap and maintenance plan
+
 
 ## Folder Outline
 
