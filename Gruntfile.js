@@ -77,10 +77,17 @@ module.exports = function (grunt) {
                     cmd: 'vendor/bin/phpunit -c phpunit.xml.dist'
                 },
 
+                'phpunit-ci': {
+                    cmd: 'vendor/bin/phpunit -c phpunit.xml.dist ' +
+                        '--coverage-html build/coverage ' +
+                        '--coverage-clover build/logs/clover.xml ' +
+                        '--log-junit build/logs/junit.xml'
+                },
+
                 // http://www.squizlabs.com/php-codesniffer
                 'phpcs': {
                     cmd: function () {
-                        return 'mkdir -p build/reports/php-codesniffer && vendor/bin/phpcs --report=full --report=checkstyle --tab-width=4 --report-checkstyle=build/reports/php-codesniffer/checkstyle.xml ' +
+                        return 'mkdir -p build/reports && vendor/bin/phpcs --report=full --report=checkstyle --tab-width=4 --report-checkstyle=build/reports/checkstyle.xml ' +
                             '--standard=PSR2 ' + grunt.config.data.dirs.phpcs.join(' ');
                     }
                 },
@@ -88,8 +95,7 @@ module.exports = function (grunt) {
                 // http://phpmd.org/documentation/index.html
                 'phpmd': {
                     cmd: function () {
-                        //xml ../pmd-rules.xml --suffixes=php --reportfile ../../../build/reports/pmd/pmd.xml';
-                        return 'vendor/bin/phpmd ' + grunt.config.data.dirs.phpmd.join(',') + ' text phpmd.xml --suffixes=php';
+                        return 'mkdir -p build/reports && vendor/bin/phpmd ' + grunt.config.data.dirs.phpmd.join(',') + ' xml phpmd.xml --suffixes=php --reportfile build/reports/phpmd.xml';
                     }
                 },
 
@@ -120,6 +126,14 @@ module.exports = function (grunt) {
                     cmd: 'composer --dev install'
                 },
 
+                'ci-prepare': {
+                    cmd: 'curl -s https://getcomposer.org/installer | php' +
+                        '&& php composer.phar --dev install' +
+                        '&& rm composer.phar ' +
+                        '&& mkdir -p app/log ' +
+                        '&& mkdir -p app/cache'
+                },
+
                 'npm-install': {
                     cmd: 'npm install'
                 },
@@ -139,6 +153,7 @@ module.exports = function (grunt) {
     // Task aliases
     grunt.registerTask('mac-paths', 'Set up log and cache paths on a Mac', 'exec:mac-paths');
     grunt.registerTask('phpunit', 'PHP Unittests', 'exec:phpunit');
+    grunt.registerTask('phpunit-ci', 'PHP Unittests for CI', 'exec:phpunit-ci');
     grunt.registerTask('phpcs', 'PHP Codesniffer', 'exec:phpcs');
     grunt.registerTask('phpmd', 'PHP Mess Detector', 'exec:phpmd');
     grunt.registerTask('pdepend', 'PHP Depend', 'exec:pdepend');
@@ -146,6 +161,6 @@ module.exports = function (grunt) {
     grunt.registerTask('jsloc', 'JavaScript source statistics', 'exec:jsloc');
     grunt.registerTask('install', 'Install all project dependencies', ['exec:npm-install', 'exec:composer-install', 'exec:bundle-install']);
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('jenkins', ['phpunit', 'phpcs', 'phpmd']);
+    grunt.registerTask('jenkins', ['exec:ci-prepare', 'phpunit-ci', 'phpcs', 'phpmd']);
 }
 ;
