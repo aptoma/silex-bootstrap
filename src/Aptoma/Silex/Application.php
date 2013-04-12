@@ -41,6 +41,7 @@ class Application extends BaseApplication
                 'monolog.logfile' => $app['monolog.logfile'],
             )
         );
+        $app->register(new \Aptoma\Silex\Provider\ExtendedLoggerServiceProvider());
 
         $app->register(new ServiceControllerServiceProvider());
 
