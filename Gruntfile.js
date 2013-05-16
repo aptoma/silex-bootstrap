@@ -87,38 +87,21 @@ module.exports = function (grunt) {
                 // http://www.squizlabs.com/php-codesniffer
                 'phpcs': {
                     cmd: function () {
-                        return 'mkdir -p build/reports && vendor/bin/phpcs --report=full --report=checkstyle --tab-width=4 --report-checkstyle=build/reports/checkstyle.xml ' +
-                            '--standard=PSR2 ' + grunt.config.data.dirs.phpcs.join(' ');
+                        return 'mkdir -p build/reports && vendor/bin/phpcs --report=full --report=checkstyle --report-checkstyle=build/reports/checkstyle.xml ' +
+                            '--standard=PSR2 --extensions=php ' + grunt.config.data.dirs.phpcs.join(' ');
                     }
                 },
 
                 // http://phpmd.org/documentation/index.html
                 'phpmd': {
                     cmd: function () {
+                        return 'vendor/bin/phpmd ' + grunt.config.data.dirs.phpmd.join(',') + ' text phpmd.xml --suffixes=php';
+                    }
+                },
+
+                'phpmd-ci': {
+                    cmd: function () {
                         return 'mkdir -p build/reports && vendor/bin/phpmd ' + grunt.config.data.dirs.phpmd.join(',') + ' xml phpmd.xml --suffixes=php --reportfile build/reports/phpmd.xml';
-                    }
-                },
-
-                // http://pdepend.org/
-                'pdepend': {
-                    cmd: function () {
-                        return 'mkdir -p build/reports/php-depend && vendor/bin/pdepend --jdepend-xml=build/reports/php-depend/jdepend.xml --jdepend-chart=build/reports/php-depend/dependencies.svg ' +
-                            '--overview-pyramid=build/reports/php-depend/overview-pyramid.svg --coderank-mode=method --suffix=php ' + grunt.config.data.dirs.pdepend.join(',');
-                    }
-                },
-
-                // https://github.com/sebastianbergmann/phpcpd
-                'phpcpd': {
-                    cmd: function () {
-                        // TODO: get phpcpd installed with Composer and stop using the the global phpcpd command
-                        return 'phpcpd --log-pmd build/reports/pmd-cpd/pmd-cpd.xml ' + grunt.config.data.dirs.phpcpd.join(' ');
-                    }
-                },
-
-                // https://github.com/visionmedia/stats
-                'jsloc': {
-                    cmd: function () {
-                        return 'node_modules/stats/bin/stats -T ' + grunt.config.data.dirs.amd.join(' ');
                     }
                 },
 
@@ -131,7 +114,8 @@ module.exports = function (grunt) {
                         '&& php composer.phar --dev install' +
                         '&& rm composer.phar ' +
                         '&& mkdir -p app/log ' +
-                        '&& mkdir -p app/cache'
+                        '&& mkdir -p app/cache ' +
+                        '&& rm -rf app/cache/*'
                 },
 
                 'npm-install': {
@@ -156,11 +140,8 @@ module.exports = function (grunt) {
     grunt.registerTask('phpunit-ci', 'PHP Unittests for CI', 'exec:phpunit-ci');
     grunt.registerTask('phpcs', 'PHP Codesniffer', 'exec:phpcs');
     grunt.registerTask('phpmd', 'PHP Mess Detector', 'exec:phpmd');
-    grunt.registerTask('pdepend', 'PHP Depend', 'exec:pdepend');
-    grunt.registerTask('phpcpd', 'Copy/Paste Detector (CPD) for PHP code', 'exec:phpcpd');
-    grunt.registerTask('jsloc', 'JavaScript source statistics', 'exec:jsloc');
     grunt.registerTask('install', 'Install all project dependencies', ['exec:npm-install', 'exec:composer-install', 'exec:bundle-install']);
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('jenkins', ['exec:ci-prepare', 'phpunit-ci', 'phpcs', 'phpmd']);
+    grunt.registerTask('jenkins', ['exec:ci-prepare', 'phpunit-ci', 'phpcs', 'exec:phpmd-ci']);
 }
 ;
