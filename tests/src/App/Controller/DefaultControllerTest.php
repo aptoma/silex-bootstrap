@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Aptoma\BaseWebTestCase;
+use App\BaseWebTestCase;
 
 class DefaultControllerTest extends BaseWebTestCase
 {

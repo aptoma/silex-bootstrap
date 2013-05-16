@@ -6,8 +6,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $config = array(
     'debug' => true,
     'timer.start' => $startTime,
-    'timer.threshold_info' => 1000,
-    'timer.threshold_warning' => 5000,
     'monolog.name' => 'silex-bootstrap',
     'meta.service' => 'unnamed-service',
     'monolog.level' => \Monolog\Logger::DEBUG,
@@ -25,7 +23,7 @@ if (file_exists(__DIR__ . '/config.php')) {
 }
 
 // Initialize Application
-$app = new Aptoma\Silex\Application($config);
+$app = new App\Silex\Application($config);
 
 /**
  * Register controllers as services
