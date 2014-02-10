@@ -11,38 +11,21 @@ includes:
 This repo is complemented by [aptoma/silex-extras](https://github.com/aptoma/silex-extras),
 which contains various helpers, base classes and services. The idea is that you will never
 need to do a rebase of Silex Bootstrap, as all significant updates will be handled by Silex
-Extras, which you can simply update through Composer.
+Extras, which you can simply update through Composer. In fact, you should delete the `.git`
+directory after downloading the project.
 
 To start a new project, run:
 
-    $ git clone git@github.com:aptoma/silex-bootstrap.git <target>
-    $ cd <target>
-    $ rm -rf .git
-
-This repo contains a few example files and comments like this one, that should
-obviously not remain within the project.
-
-By design, this bootstrap should include more than you are likely to need,
-as it's easier to delete stuff, than to add.
-
-If you find yourself changing a lot of stuff, ask why you do those changes, and
-if maybe not they should be part of the default setup of this repo. No projects
-are equal, so some variance in how to do stuff is of course expected.
+    $ composer create-project aptoma/silex-bootstrap <target-dir>
 
 To get started, you probably want to have a look at `app/app.php` to see the
 config bootstrap, and then have a look `app/routing.php`,
 `src/App/Controller/DefaultController.php` and `src/App/views` for some basic
 actions.
 
-When ready, delete everything in this section, and upgrade the following sections
-according to your project.
-
-TODO:
-
-- Set up default deployment routines (using Capistrano)
-- Provide a better starting point for JS/CSS
-- Provide cache headers management for assets
-- Iterate
+This repo contains a few example files and comments like this one, that should
+obviously not remain within the project. When ready, delete everything in this
+section, and update the following sections according to your project.
 
 Project Name
 ============
@@ -59,9 +42,9 @@ A clearly defined and documented purpose and lifetime
 
 A description of technologies and components/modules
 
-### Integration with other Aptoma Products
+### Integration with other company products
 
-A description of other Aptoma products in use/integrated with
+A description of other company products in use/integrated with
 
 ### External Dependencies
 
@@ -166,4 +149,5 @@ Describe guidelines for contributing.
 To contribute to _this_ project, simply create a feature branch, do your thing,
 and open a pull request. If you do lot's of stuff in your project that you think
 should be easily backported to older `silex-bootstrap` based projects, consider
-extracting them to separate packages that can be managed by Composer.
+extracting them to separate packages that can be managed by Composer, or add them to
+[silex-extras](https://github.com/aptoma/silex-extras).
