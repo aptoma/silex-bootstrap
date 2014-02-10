@@ -15,12 +15,6 @@
             "Aptoma": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:aptoma/silex-extras.git"
-        }
-    ],
     "require": {
         "silex/silex": "~1.1",
         "aptoma/silex-extras": "~1.2",
