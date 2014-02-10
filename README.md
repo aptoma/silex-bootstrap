@@ -1,5 +1,5 @@
-About `silex-bootstrap`
-=======================
+Silex Bootstrap
+===============
 
 This repository provides a starting point for building Silex applications. It
 includes:
@@ -7,6 +7,11 @@ includes:
 - A directory structure
 - Stubs and default configuration
 - CI/QA config
+
+This repo is complemented by [aptoma/silex-extras](https://github.com/aptoma/silex-extras),
+which contains various helpers, base classes and services. The idea is that you will never
+need to do a rebase of Silex Bootstrap, as all significant updates will be handled by Silex
+Extras, which you can simply update through Composer.
 
 To start a new project, run:
 
