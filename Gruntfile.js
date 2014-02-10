@@ -15,11 +15,6 @@ module.exports = function (grunt) {
                 jshint: [
                     'Gruntfile.js',
                     'web/js/**/*.js'
-                ],
-                phplint: [
-                    'app/*.php',
-                    'src/*.php',
-                    'tests/*.php'
                 ]
             },
 
@@ -32,14 +27,6 @@ module.exports = function (grunt) {
                 phpmd: [
                     'src',
                     'tests'
-                ],
-                pdepend: [
-                    'src',
-                    'tests'
-                ],
-                phpcpd: [
-                    'src',
-                    'tests'
                 ]
             },
 
@@ -50,12 +37,6 @@ module.exports = function (grunt) {
                 },
                 files: {
                     src: '<%= files.jshint %>'
-                }
-            },
-
-            phplint: {
-                files: {
-                    src: '<%= files.phplint %>'
                 }
             },
 
@@ -141,7 +122,8 @@ module.exports = function (grunt) {
     grunt.registerTask('phpcs', 'PHP Codesniffer', 'exec:phpcs');
     grunt.registerTask('phpmd', 'PHP Mess Detector', 'exec:phpmd');
     grunt.registerTask('install', 'Install all project dependencies', ['exec:npm-install', 'exec:composer-install', 'exec:bundle-install']);
-    grunt.registerTask('default', ['jshint']);
+    grunt.registerTask('default', ['qa']);
+    grunt.registerTask('qa', ['phpunit', 'phpcs', 'phpmd']);
     grunt.registerTask('jenkins', ['exec:ci-prepare', 'phpunit-ci', 'phpcs', 'exec:phpmd-ci']);
 }
 ;
