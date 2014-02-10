@@ -1,6 +1,8 @@
 {
     "name": "aptoma/silex-bootstrap",
     "description": "Basic bootstrap for Silex based projects. Use as template for getting started quickly.",
+    "license": "MIT",
+    "keywords": ["Silex", "Bootstrap"],
     "authors": [
         {
             "name": "Gunnar Lium",
