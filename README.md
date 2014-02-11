@@ -92,9 +92,10 @@ You also need to install jshint and grunt-cli globally:
 
 Set up paths for logging and caching:
 
-    $ grunt mac-paths
+    $ grunt mac-paths # or ubuntu-paths if you are using ubuntu
     # OR if your web server doesn't run as the default _www
     $ grunt exec:mac-paths:<web_server_user>
+    # OR grunt exec:ubuntu-paths:<web_server_user>
 
 To watch your project, run `bundle exec guard`;
 

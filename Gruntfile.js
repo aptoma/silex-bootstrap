@@ -52,7 +52,15 @@ module.exports = function (grunt) {
                             '&& sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/log');
                     }
                 },
-
+                'ubuntu-paths': {
+                    cmd: function (user) {
+                        user = user || 'www-data';
+                        return ('mkdir -p app/cache ' +
+                            '&& mkdir -p app/log ' +
+                            '&& sudo setfacl -R -m u:'+user+':rwx -m u:`whoami`:rwx app/cache app/log ' +
+                            '&& sudo setfacl -dR -m u:'+user+':rwx -m u:`whoami`:rwx app/cache app/log ');
+                    }
+                },
                 // https://github.com/sebastianbergmann/phpunit/
                 'phpunit': {
                     cmd: 'vendor/bin/phpunit -c phpunit.xml.dist'
@@ -116,6 +124,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
     // Task aliases
+    grunt.registerTask('ubuntu-paths', 'Set up log and cache paths on a Mac', 'exec:ubuntu-paths');
     grunt.registerTask('mac-paths', 'Set up log and cache paths on a Mac', 'exec:mac-paths');
     grunt.registerTask('phpunit', 'PHP Unittests', 'exec:phpunit');
     grunt.registerTask('phpunit-ci', 'PHP Unittests for CI', 'exec:phpunit-ci');
