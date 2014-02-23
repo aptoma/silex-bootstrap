@@ -7,16 +7,16 @@
     "packages": [
         {
             "name": "aptoma/silex-extras",
-            "version": "1.2.1",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aptoma/silex-extras.git",
-                "reference": "6e1f9f3e0e42a43013a8c6921188443c750b9a27"
+                "reference": "bc6b48fa704c30397c203c441fcf90c0d0c12d99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aptoma/silex-extras/zipball/6e1f9f3e0e42a43013a8c6921188443c750b9a27",
-                "reference": "6e1f9f3e0e42a43013a8c6921188443c750b9a27",
+                "url": "https://api.github.com/repos/aptoma/silex-extras/zipball/bc6b48fa704c30397c203c441fcf90c0d0c12d99",
+                "reference": "bc6b48fa704c30397c203c441fcf90c0d0c12d99",
                 "shasum": ""
             },
             "require": {
@@ -66,7 +66,7 @@
             "keywords": [
                 "silex"
             ],
-            "time": "2014-02-10 12:46:01"
+            "time": "2014-02-14 09:19:30"
         },
         {
             "name": "monolog/monolog",
