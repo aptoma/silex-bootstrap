@@ -1,13 +1,15 @@
 {
-    "name": "silex-bootstrap",
-    "version": "0.0.1",
-    "engines": {
-        "node": ">=0.8.0"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.0",
-        "grunt-cli": "~0.1",
-        "grunt-exec": "~0.4",
-        "grunt-contrib-jshint": "~0.8"
-    }
+  "name": "silex-bootstrap",
+  "repository": "https://github.com/aptoma/silex-bootstrap.git",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-cli": "~0.1",
+    "grunt-contrib-jshint": "~0.8",
+    "grunt-exec": "~0.4",
+    "time-grunt": "^0.4.0"
+  }
 }

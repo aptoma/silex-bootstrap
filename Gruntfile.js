@@ -5,6 +5,7 @@
 
 module.exports = function (grunt) {
     'use strict';
+    require('time-grunt')(grunt);
 
     // Project configuration.
     grunt.initConfig({
@@ -81,6 +82,12 @@ module.exports = function (grunt) {
                     }
                 },
 
+                'phpcs-travis': {
+                    cmd: function () {
+                        return 'vendor/bin/phpcs --standard=PSR2 --extensions=php ' + grunt.config.data.dirs.phpcs.join(' ');
+                    }
+                },
+
                 // http://phpmd.org/documentation/index.html
                 'phpmd': {
                     cmd: function () {
@@ -134,5 +141,6 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['qa']);
     grunt.registerTask('qa', ['phpunit', 'phpcs', 'phpmd']);
     grunt.registerTask('jenkins', ['exec:ci-prepare', 'phpunit-ci', 'phpcs', 'exec:phpmd-ci']);
+    grunt.registerTask('travis', ['exec:composer-install', 'phpunit', 'exec:phpcs-travis', 'phpmd']);
 }
 ;

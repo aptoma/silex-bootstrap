@@ -1,0 +1,34 @@
+# Lint: http://lint.travis-ci.org
+
+notifications:
+  email:
+    - gunnar@aptoma.com
+
+language: php
+
+php:
+  - 5.3
+  - 5.4
+
+cache:
+  directories:
+    - vendor
+    - node_modules
+
+git:
+  submodules: false
+
+before_install:
+
+install:
+  - npm install
+
+before_script:
+  - phpenv config-add php.ini
+  - mkdir -p app/log
+  - mkdir -p app/cache
+  - rm -rf app/cache/twig/*
+  - rm -rf app/cache/assetic/*
+
+script:
+  - ./node_modules/grunt-cli/bin/grunt travis
