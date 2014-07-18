@@ -1,5 +1,8 @@
 Silex Bootstrap
 ===============
+[![Build Status](https://travis-ci.org/aptoma/silex-bootstrap.svg)](https://travis-ci.org/aptoma/silex-bootstrap)
+[![Coverage Status](https://img.shields.io/coveralls/aptoma/silex-bootstrap.svg)](https://coveralls.io/r/aptoma/silex-bootstrap)
+
 
 This repository provides a starting point for building Silex applications. It
 includes:

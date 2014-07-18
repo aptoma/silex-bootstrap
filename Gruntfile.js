@@ -74,6 +74,10 @@ module.exports = function (grunt) {
                         '--log-junit build/logs/junit.xml'
                 },
 
+                'phpunit-travis': {
+                    cmd: 'vendor/bin/phpunit --coverage-clover build/logs/clover.xml'
+                },
+
                 // http://www.squizlabs.com/php-codesniffer
                 'phpcs': {
                     cmd: function () {
@@ -141,6 +145,6 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['qa']);
     grunt.registerTask('qa', ['phpunit', 'phpcs', 'phpmd']);
     grunt.registerTask('jenkins', ['exec:ci-prepare', 'phpunit-ci', 'phpcs', 'exec:phpmd-ci']);
-    grunt.registerTask('travis', ['exec:composer-install', 'phpunit', 'exec:phpcs-travis', 'phpmd']);
+    grunt.registerTask('travis', ['exec:composer-install', 'exec:phpunit-travis', 'exec:phpcs-travis', 'phpmd']);
 }
 ;
