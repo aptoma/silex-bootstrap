@@ -29,6 +29,7 @@
         "pdepend/pdepend": "~1.1",
         "phpmd/phpmd": "~1.4",
         "squizlabs/php_codesniffer": "~1.4, <1.5",
+        "codeclimate/php-test-reporter": "dev-master",
         "satooshi/php-coveralls": "~0.6"
     },
     "minimum-stability": "stable"
