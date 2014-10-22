@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * DefaultController is here to help you get started.
